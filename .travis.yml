@@ -16,20 +16,18 @@ script:
   - npm run package-nix32
   - npm run package-nix64
   - npm run package-nix-armv7l
-  - npm run package-nix-arm64
 after_success:
-  - tar -zcf release-builds/xstrme-darwin-x64-$TRAVIS_TAG.tar.gz release-builds/electron-quick-start-darwin-x64
-  - tar -zcf release-builds/xstrme-win32-ia32-$TRAVIS_TAG.tar.gz release-builds/electron-quick-start-win32-ia32
-  - tar -zcf release-builds/xstrme-win32-x64-$TRAVIS_TAG.tar.gz release-builds/electron-quick-start-win32-x64
+  - zip -r release-builds/xstrme-darwin-x64-$TRAVIS_TAG.zip release-builds/electron-quick-start-darwin-x64
+  - zip -r release-builds/xstrme-win32-ia32-$TRAVIS_TAG.zip release-builds/electron-quick-start-win32-ia32
+  - zip -r release-builds/xstrme-win32-x64-$TRAVIS_TAG.zip release-builds/electron-quick-start-win32-x64
   - tar -zcf release-builds/xstrme-linux-ia32-$TRAVIS_TAG.tar.gz release-builds/electron-quick-start-linux-ia32
   - tar -zcf release-builds/xstrme-linux-x64-$TRAVIS_TAG.tar.gz release-builds/electron-quick-start-linux-x64
   - tar -zcf release-builds/xstrme-linux-armv7l-$TRAVIS_TAG.tar.gz release-builds/electron-quick-start-linux-armv7l
-  - tar -zcf release-builds/xstrme-linux-arm64-$TRAVIS_TAG.tar.gz release-builds/electron-quick-start-linux-arm64
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   file_glob: true
-  file: release-builds/*.tar.gz
+  file: release-builds/xstrme-*(.tar.gz|.zip)
   skip_cleanup: true
   on:
     tags: true
