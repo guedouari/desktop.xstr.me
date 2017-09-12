@@ -12,6 +12,9 @@ cache:
 script:
   - npm test
 after_success:
-  - npm run package-linux
-  - npm run package-mac
-  - npm run package-win
+  - npm run package-nix32
+  - npm run package-nix64
+  - npm run package-mac32
+  - npm run package-mac64
+  - npm run package-win32
+  - npm run package-win64
