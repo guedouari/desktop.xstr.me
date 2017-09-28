@@ -10,7 +10,6 @@ cache:
   directories:
      - ./node_modules
 script:
-  - tar xvf www.tar.gz
   - npm run package-mac
   - npm run package-win32
   - npm run package-win64
