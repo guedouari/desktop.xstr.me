@@ -17,21 +17,13 @@ script:
   - npm run package-nix64
   - npm run package-nix-armv7l
 after_success:
-  - zip -r release-builds/xstrme-darwin-x64-$TRAVIS_BRANCH.zip release-builds/electron-quick-start-darwin-x64
-  - zip -r release-builds/xstrme-win32-ia32-$TRAVIS_BRANCH.zip release-builds/electron-quick-start-win32-ia32
-  - zip -r release-builds/xstrme-win32-x64-$TRAVIS_BRANCH.zip release-builds/electron-quick-start-win32-x64
-  - tar -zcf release-builds/xstrme-linux-ia32-$TRAVIS_BRANCH.tar.gz release-builds/electron-quick-start-linux-ia32
-  - tar -zcf release-builds/xstrme-linux-x64-$TRAVIS_BRANCH.tar.gz release-builds/electron-quick-start-linux-x64
-  - tar -zcf release-builds/xstrme-linux-armv7l-$TRAVIS_BRANCH.tar.gz release-builds/electron-quick-start-linux-armv7l
-before_deploy:
-  - cp release-builds/xstrme-win32-x64-$TRAVIS_BRANCH.zip gh-pages/xstrme-win64-latest.zip
+  - zip -r release-builds/xstrme-darwin-x64-$TRAVIS_BRANCH.zip release-builds/XstrMe-darwin-x64
+  - zip -r release-builds/xstrme-win32-ia32-$TRAVIS_BRANCH.zip release-builds/XstrMe-win32-ia32
+  - zip -r release-builds/xstrme-win32-x64-$TRAVIS_BRANCH.zip release-builds/XstrMe-win32-x64
+  - tar -zcf release-builds/xstrme-linux-ia32-$TRAVIS_BRANCH.tar.gz release-builds/XstrMe-linux-ia32
+  - tar -zcf release-builds/xstrme-linux-x64-$TRAVIS_BRANCH.tar.gz release-builds/XstrMe-linux-x64
+  - tar -zcf release-builds/xstrme-linux-armv7l-$TRAVIS_BRANCH.tar.gz release-builds/XstrMe-linux-armv7l
 deploy:
-  - provider: pages
-    local_dir: gh-pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-    on:
-      branch: master
   - provider: releases
     api_key: $GITHUB_TOKEN
     file_glob: true
